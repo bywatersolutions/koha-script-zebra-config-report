@@ -8,9 +8,6 @@ The script assumes that $KOHA_CONF is defined and points to the koha-config.xml
 
 If markflavor is not specified, it will default to 'marc21'. 
 
-NOTE: the shell variabl3 ccl_properties is currently hard coded to 'koha-dev/etc/zebradb/ccl.properties'
-You will need to change this on a package install.
-
 Output should look something like this:
 
     index name: 'ISBN' att: '7'
