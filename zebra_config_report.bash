@@ -19,6 +19,22 @@
 # TODO: MARCFLAVOR should be acquired from Koha.
 MARCFLAVOR=${1:-'marc21'}
 
+# Sanityh checks:
+
+## $KOHA_CONF is populated
+
+if [ -z $KOH_CONF ]
+then
+    echo "The shell variable '\$KOHA_CONF' must contain the path to koha-conf.xml. Exiting."
+    exit
+fi
+
+## Biblio indexing must use DOM.
+if xmlstarlet sel -t -v 'yazgfs/config/zebra_bib_index_mode' $KOHA_CONF | grep -qi 'dom'
+then
+    echo "Biblio indexing must use DOM."
+fi
+
 ZEBRA_BIBLIOS_DOM="$(xmlstarlet sel -t -v 'yazgfs/server/config' $KOHA_CONF | grep zebra-biblios-dom.cfg | head -1 )"
 
 
