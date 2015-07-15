@@ -19,7 +19,8 @@
 # TODO: MARCFLAVOR should be acquired from Koha.
 MARCFLAVOR=${1:-'marc21'}
 
-ZEBRA_BIBLIOS_DOM="$(xmlstarlet sel -t -v 'yazgfs/server/config' $KOHA_CONF)"
+ZEBRA_BIBLIOS_DOM="$(xmlstarlet sel -t -v 'yazgfs/server/config' $KOHA_CONF | grep zebra-biblios-dom.cfg | head -1 )"
+
 
 find_file() {
     for path in $(grep profilePath $1 | cut -d : -f2- | sed "s/:/\n/g"); do find $path ! -type d ; done | grep "$2"
