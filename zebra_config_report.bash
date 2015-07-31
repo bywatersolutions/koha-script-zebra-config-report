@@ -30,9 +30,10 @@ then
 fi
 
 ## Biblio indexing must use DOM.
-if xmlstarlet sel -t -v 'yazgfs/config/zebra_bib_index_mode' $KOHA_CONF | grep -qi 'dom'
+if xmlstarlet sel -t -v 'yazgfs/config/zebra_bib_index_mode' $KOHA_CONF | grep -qvi 'dom'
 then
     echo "Biblio indexing must use DOM."
+    exit
 fi
 
 ZEBRA_BIBLIOS_DOM="$(xmlstarlet sel -t -v 'yazgfs/server/config' $KOHA_CONF | grep zebra-biblios-dom.cfg | head -1 )"
