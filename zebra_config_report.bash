@@ -23,7 +23,7 @@ MARCFLAVOR=${1:-'marc21'}
 
 ## $KOHA_CONF is populated
 
-if [ -z $KOH_CONF ]
+if [ -z $KOHA_CONF ]
 then
     echo "The shell variable '\$KOHA_CONF' must contain the path to koha-conf.xml. Exiting."
     exit
