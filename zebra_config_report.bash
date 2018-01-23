@@ -19,7 +19,7 @@
 # TODO: MARCFLAVOR should be acquired from Koha.
 MARCFLAVOR=${1:-'marc21'}
 
-# Sanityh checks:
+# Sanity checks:
 
 ## $KOHA_CONF is populated
 
