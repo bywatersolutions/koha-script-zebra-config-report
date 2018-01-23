@@ -58,7 +58,7 @@ ccl_properties="$(xmlstarlet sel -t -v 'yazgfs/serverinfo/ccl2rpn' $KOHA_CONF)"
 grep '^att' $bib1file | while read placeholder att indexname
 do 
     underline "index name: '$indexname' att: '$att'"
-    grep "^[^#].*[^,]1=${att}\>" $ccl_properties
+    grep "^[^#].*[^,]1=${att}\>" $ccl_properties | sort -u
     egrep "tag=\"|>${indexname}:"  $biblio_koha_indexdefs | grep -B1 ">${indexname}:"
 done 
 
